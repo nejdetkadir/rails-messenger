@@ -1,15 +1,8 @@
-# rails 6 boilerplate
-  Includes [bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/), [devise gem](https://github.com/heartcombo/devise) with omniauth([google](https://github.com/zquestz/omniauth-google-oauth2) - [github](https://github.com/omniauth/omniauth-github)), [slim gem](https://github.com/slim-template/slim) and [toastr](https://github.com/CodeSeven/toastr) 
+# Rails Messegnger
+  Sample messenger application, created with Ruby on Rails
 
-* Ruby version
-  ```
-  ruby 3.0.0
-  ```
-
-* Rails version
-  ```
-  Rails 6.1.3.1
-  ```
+## Database Schema
+  ![schema](doc/schema.png)
 
 # Installation
 
