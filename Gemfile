@@ -38,6 +38,8 @@ gem 'slim'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'friendly_id', '~> 5.4.0'
 
+gem 'ruby-progressbar'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
