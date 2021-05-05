@@ -3,6 +3,8 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :username, use: :slugged
 
+  has_friendship
+  
   has_many :rooms, dependent: :destroy
   has_many :participants, dependent: :destroy
 

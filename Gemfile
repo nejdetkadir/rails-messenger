@@ -37,6 +37,7 @@ gem 'slim'
 
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'friendly_id', '~> 5.4.0'
+gem 'has_friendship', github: 'sungwoncho/has_friendship'
 
 gem 'ruby-progressbar'
 
