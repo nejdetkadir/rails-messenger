@@ -21,23 +21,28 @@
               = image_tag room.avatar_url(:thumb), class: "circle"
               .ms-1.text-dark.hide-in-mobile #{room.name}
     .col-9
-      .card
-        .card-body
-          .d-flex.justify-content-between.align-items-center
-            = image_tag "https://via.placeholder.com/50x50", class: "circle"
-            .dropdown
-              a#dropdownRoomSettings.text-grey.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
-                = icon('fas', 'ellipsis-v', class: "cursor")
-              ul.dropdown-menu(aria-labelledby='dropdownRoomSettings')
-                li
-                  a.dropdown-item(href='#') Action
-                li
-                  a.dropdown-item(href='#') Another action
-                li
-                  a.dropdown-item(href='#') Something else here       
-      .messages
-        - 99.times do |message|
-          = render "messages/message", me: message % 2 == 0
-      .form-area
-        = render "messages/form"
+      - if @room.present?
+        .card
+          .card-body
+            .d-flex.justify-content-between.align-items-center
+              = image_tag "https://via.placeholder.com/50x50", class: "circle"
+              .dropdown
+                a#dropdownRoomSettings.text-grey.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
+                  = icon('fas', 'ellipsis-v', class: "cursor")
+                ul.dropdown-menu(aria-labelledby='dropdownRoomSettings')
+                  li
+                    a.dropdown-item(data-bs-toggle="modal" data-bs-target="#participantModal") Participants
+                  li
+                    a.dropdown-item(href='#') Another action
+                  li
+                    a.dropdown-item(href='#') Something else here       
+        .messages
+          - 99.times do |message|
+            = render "messages/message", me: message % 2 == 0
+        .form-area
+          = render "messages/form"
+      - else
+        p index
 = render "form"
+- if @room.present?
+  = render "rooms/modals/participant", room: @room
