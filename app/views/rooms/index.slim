@@ -3,7 +3,9 @@
     .col-3
       .card
         .card-body.d-flex.justify-content-between.align-items-center
-          = image_tag current_user.avatar_url(:thumb), class: "circle"
+          .d-flex.justify-content-start.align-items-center
+            = image_tag current_user.avatar_url(:thumb), class: "circle"
+            .fs-6.ps-1.hide-in-mobile #{current_user.username}
           .dropdown
             a#dropdownUserSettings.dropdown-toggle.text-grey(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
               = icon('fas', 'ellipsis-v', class: "cursor")
@@ -50,7 +52,10 @@
         .form-area
           = render "messages/form"
       - else
-        p index
+        .text-center
+          = image_tag "logo_thumb.png", class: "mt-5"
+          h1.fw-bold.mt-3 Welcome to Rails Messenger
+          p.fw-light.mt-3.w-50.mx-auto Start chatting with your friends right away with rails messenger. Moreover, it's fast and free. Create a group now and start chatting with your friends.
 = render "form"
 = render "rooms/modals/friends"
 = render "rooms/modals/add_friend"
