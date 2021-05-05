@@ -3,7 +3,7 @@
     .col-3
       .card
         .card-body.d-flex.justify-content-between.align-items-center
-          = image_tag "https://via.placeholder.com/50x50", class: "circle"
+          = image_tag current_user.avatar_url(:thumb), class: "circle"
           .dropdown
             a#dropdownUserSettings.dropdown-toggle.text-grey(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
               = icon('fas', 'ellipsis-v', class: "cursor")
@@ -27,7 +27,9 @@
         .card
           .card-body
             .d-flex.justify-content-between.align-items-center
-              = image_tag "https://via.placeholder.com/50x50", class: "circle"
+              .d-flex.justify-content-start.align-items-center
+                = image_tag @room.avatar_url(:thumb), class: "circle"
+                .fs-6.ps-3 #{@room.name}
               .dropdown
                 a#dropdownRoomSettings.text-grey.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
                   = icon('fas', 'ellipsis-v', class: "cursor")
