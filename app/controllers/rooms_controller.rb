@@ -63,7 +63,7 @@ class RoomsController < ApplicationController
       flash[:alert] = "An error has occurred"
     end
 
-    redirect_to root_path
+    redirect_to rooms_path
   end
 
   def show
@@ -73,7 +73,7 @@ class RoomsController < ApplicationController
   def destroy
     @room.destroy
     flash[:notice] = "You removed room successfully"
-    redirect_to root_path
+    redirect_to rooms_path
   end
 
   private

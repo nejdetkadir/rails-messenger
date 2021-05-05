@@ -1,4 +1,5 @@
 class FriendsController < ApplicationController
+  before_action :authenticate_user!
   
   def destroy
     @user = User.friendly.find(params[:id])
