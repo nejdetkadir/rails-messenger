@@ -1,4 +1,5 @@
-.d-flex.mb-3.mt-3.container
-  textarea.form-control(type='text' placeholder="Enter message...")
-  button.btn.btn-primary(type='button')
+= form_with(model: Message.new, class: "d-flex mb-3 mt-3 container") do |f|
+  = f.hidden_field :room_id, value: room_id 
+  = f.text_area :content, class: "form-control", placeholder: "Enter message..."
+  = button_tag class: "btn btn-primary" do
     = icon('fas', 'paper-plane')

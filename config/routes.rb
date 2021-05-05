@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     post 'friends/search', to: 'friends#search', as: 'search_friend'
 
     resources :rooms
+    resources :messages
     
     scope 'rooms/:id' do
       post '/:user_id', to: 'rooms#add_participant', as: 'add_participant'

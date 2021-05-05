@@ -50,7 +50,7 @@
           - @room.messages.each do |message|
             = render "messages/message", me: message.user.eql?(current_user), message: message
         .form-area
-          = render "messages/form"
+          = render "messages/form", room_id: @room.id
       - else
         .text-center
           = image_tag "logo_thumb.png", class: "mt-5"
