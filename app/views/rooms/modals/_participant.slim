@@ -7,8 +7,16 @@
       .modal-body
         ul.list-group  
           - room.participants.each do |p|
-            li.list-group-item.d-flex.justify-content-start.align-items-center
-              = image_tag p.user.avatar_url(:thumb), class: "circle"
-              .fs-6.fw-bold #{p.user.username} #{"(admin)" if p.user.eql?(room.user)}
+            - if p.user.eql?(room.user)
+              li.list-group-item.d-flex.justify-content-start.align-items-center
+                = image_tag p.user.avatar_url(:thumb), class: "circle"
+                .fs-6.fw-bold #{p.user.username} (admin)
+            - else
+              li.list-group-item.d-flex.justify-content-between.align-items-center
+                .d-flex.justify-content-start.align-items-center
+                  = image_tag p.user.avatar_url(:thumb), class: "circle"
+                  .fs-6.fw-bold #{p.user.username}
+                = link_to destroy_participant_path(room, p.user), method: :delete do
+                  = icon('fas', 'trash', class: "text-danger")
       .modal-footer
         button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close

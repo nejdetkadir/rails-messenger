@@ -1,0 +1,17 @@
+#addParticipantModal.modal.fade(tabindex='-1' aria-labelledby='addParticipantModalLabel' aria-hidden='true')
+  .modal-dialog.modal-dialog-centered
+    .modal-content
+      .modal-header
+        h5#addParticipantModalLabel.modal-title Add Participant to #{room.name}
+        button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+      .modal-body
+        ul.list-group  
+          - add_participants_list(current_user, room).each do |f|
+            li.list-group-item.d-flex.justify-content-between.align-items-center
+              .d-flex.justify-content-start.align-items-center
+                = image_tag f.avatar_url(:thumb), class: "circle"
+                .fs-6.fw-bold #{f.username}
+              = link_to add_participant_path(room, f), method: :post do
+                = icon('fas', 'plus', class: "text-success")
+      .modal-footer
+        button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close

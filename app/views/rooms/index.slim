@@ -37,7 +37,7 @@
                   li
                     a.dropdown-item(data-bs-toggle="modal" data-bs-target="#participantModal") Participants
                   li
-                    a.dropdown-item(href='#') Another action
+                    a.dropdown-item(data-bs-toggle="modal" data-bs-target="#addParticipantModal") Add Participant
                   li
                     a.dropdown-item(href='#') Something else here       
         .messages
@@ -52,3 +52,4 @@
 = render "rooms/modals/add_friend"
 - if @room.present?
   = render "rooms/modals/participant", room: @room
+  = render "rooms/modals/add_participant", room: @room

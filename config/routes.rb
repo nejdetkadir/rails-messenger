@@ -8,5 +8,7 @@ Rails.application.routes.draw do
 
   delete 'friends/:id', to: 'friends#destroy', as: 'remove_friend'
   post 'friends/search', to: 'friends#search', as: 'search_friend'
+  post 'rooms/:id/:user_id', to: 'rooms#add_participant', as: 'add_participant'
+  delete 'rooms/:id/:user_id', to: 'rooms#destroy_participant', as: 'destroy_participant'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
