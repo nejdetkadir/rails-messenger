@@ -16,7 +16,8 @@
                 .d-flex.justify-content-start.align-items-center
                   = image_tag p.user.avatar_url(:thumb), class: "circle"
                   .fs-6.fw-bold #{p.user.username}
-                = link_to destroy_participant_path(room, p.user), method: :delete do
-                  = icon('fas', 'trash', class: "text-danger")
+                - if room.user.eql?(current_user)
+                  = link_to destroy_participant_path(room, p.user), method: :delete do
+                    = icon('fas', 'trash', class: "text-danger")
       .modal-footer
         button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close

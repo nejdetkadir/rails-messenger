@@ -36,10 +36,14 @@
                 ul.dropdown-menu(aria-labelledby='dropdownRoomSettings')
                   li
                     a.dropdown-item(data-bs-toggle="modal" data-bs-target="#participantModal") Participants
-                  li
-                    a.dropdown-item(data-bs-toggle="modal" data-bs-target="#addParticipantModal") Add Participant
-                  li
-                    = link_to "Remove Room", room_path(@room), class: "dropdown-item", data: {:confirm => 'Are you sure?'}, method: :delete    
+                  - if @room.user.eql?(current_user)
+                    li
+                      a.dropdown-item(data-bs-toggle="modal" data-bs-target="#addParticipantModal") Add Participant
+                    li
+                      = link_to "Remove Room", room_path(@room), class: "dropdown-item", data: {:confirm => 'Are you sure?'}, method: :delete
+                  - else
+                    li
+                      = link_to "Left Room", left_room_path(@room, current_user), class: "dropdown-item", data: {:confirm => 'Are you sure?'}, method: :delete
         .messages
           - 99.times do |message|
             = render "messages/message", me: message % 2 == 0

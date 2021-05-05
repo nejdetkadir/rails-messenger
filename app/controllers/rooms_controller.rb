@@ -1,8 +1,8 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_room, only: %i[ show destroy add_participant destroy_participant ]
+  before_action :set_room, only: %i[ show destroy add_participant destroy_participant left_room ]
   before_action :set_rooms, only: %i[ show index ]
-  before_action :set_user, only: %i[ add_participant destroy_participant ]
+  before_action :set_user, only: %i[ add_participant destroy_participant left_room ]
 
   def index
   end
@@ -50,6 +50,22 @@ class RoomsController < ApplicationController
     redirect_to room_path(@room)
   end
 
+  def left_room
+    if @room.participants.where(user_id: current_user.id).first
+
+      if @user.eql?(current_user)
+        Participant.where(room_id: @room.id, user_id: current_user.id).first.destroy
+        flash[:notice] = "You successfully left the #{@room.name}"
+      else
+        flash[:alert] = "An error has occurred"
+      end
+    else
+      flash[:alert] = "An error has occurred"
+    end
+
+    redirect_to root_path
+  end
+
   def show
     render :index
   end
@@ -62,11 +78,14 @@ class RoomsController < ApplicationController
 
   private
     def set_room
-      @room = current_user.rooms.find(params[:id])
+      @room = current_user.participants.where(room_id: params[:id]).first.room
     end
 
     def set_rooms
-      @rooms = current_user.rooms
+      @rooms = Array.new
+      current_user.participants.each do |p|
+        @rooms.push(p.room)
+      end
     end
 
     def set_user
