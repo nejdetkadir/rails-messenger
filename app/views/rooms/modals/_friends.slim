@@ -11,7 +11,7 @@
               .d-flex.justify-content-start.align-items-center
                 = image_tag f.avatar_url(:thumb), class: "circle"
                 .fs-6.fw-bold #{f.username}
-              = link_to root_path, method: :delete do
+              = link_to remove_friend_path(f), method: :delete do
                 = icon('fas', 'trash', class: "text-danger")
       .modal-footer
         button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close

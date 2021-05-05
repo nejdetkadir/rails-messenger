@@ -13,7 +13,9 @@
               li
                 a.dropdown-item(data-bs-toggle="modal" data-bs-target="#friendsModal") My Friends
               li
-                a.dropdown-item(href='#') Something else here
+                a.dropdown-item(data-bs-toggle="modal" data-bs-target="#addFriendModal") Add Friend
+              li
+                = link_to "Logout", destroy_user_session_path, class: "dropdown-item", data: {:confirm => 'Are you sure?'}, method: :delete
       - @rooms.each do |room|
         = link_to room_path(room), class: "text-decoration-none" do
           .menu
@@ -45,5 +47,6 @@
         p index
 = render "form"
 = render "rooms/modals/friends"
+= render "rooms/modals/add_friend"
 - if @room.present?
   = render "rooms/modals/participant", room: @room

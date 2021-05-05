@@ -1,0 +1,13 @@
+#addFriendModal.modal.fade(tabindex='-1' aria-labelledby='addFriendModalLabel' aria-hidden='true')
+  .modal-dialog.modal-dialog-centered
+    = form_with(model: User.new, url: search_friend_path, class: "modal-content") do |f|     
+      .modal-header
+        h5#addFriendModalLabel.modal-title Add Friend
+        button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+      .modal-body
+        .mb-3
+          = f.label :username, class: "form-label"
+          = f.search_field :username, class: "form-control" 
+      .modal-footer
+        button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+        = f.submit "Search", class: "btn btn-primary"
