@@ -9,17 +9,17 @@
               = icon('fas', 'ellipsis-v', class: "cursor")
             ul.dropdown-menu(aria-labelledby='dropdownUserSettings')
               li
-                a.dropdown-item(href='#') Action
+                a.dropdown-item(data-bs-toggle="modal" data-bs-target="#newGroupModal") New Group
               li
                 a.dropdown-item(href='#') Another action
               li
                 a.dropdown-item(href='#') Something else here
-      - 20.times do |i|
-        = link_to root_path, class: "text-decoration-none" do
+      - @rooms.each do |room|
+        = link_to room_path(room), class: "text-decoration-none" do
           .menu
             .d-flex.justify-content-start.align-items-center
-              = image_tag "https://via.placeholder.com/50x50", class: "circle"
-              .ms-1.text-dark.hide-in-mobile Room #{i}
+              = image_tag room.avatar_url(:thumb), class: "circle"
+              .ms-1.text-dark.hide-in-mobile #{room.name}
     .col-9
       .card
         .card-body
@@ -40,3 +40,4 @@
           = render "messages/message", me: message % 2 == 0
       .form-area
         = render "messages/form"
+= render "form"
