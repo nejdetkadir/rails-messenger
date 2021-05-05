@@ -39,7 +39,7 @@
                   li
                     a.dropdown-item(data-bs-toggle="modal" data-bs-target="#addParticipantModal") Add Participant
                   li
-                    a.dropdown-item(href='#') Something else here       
+                    = link_to "Remove Room", room_path(@room), class: "dropdown-item", data: {:confirm => 'Are you sure?'}, method: :delete    
         .messages
           - 99.times do |message|
             = render "messages/message", me: message % 2 == 0

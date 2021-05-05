@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_room, only: %i[ show edit update destroy add_participant destroy_participant ]
+  before_action :set_room, only: %i[ show destroy add_participant destroy_participant ]
   before_action :set_rooms, only: %i[ show index ]
   before_action :set_user, only: %i[ add_participant destroy_participant ]
 
@@ -37,7 +37,7 @@ class RoomsController < ApplicationController
         flash[:alert] = "An error has occurred"
       else  
         if participant
-          participant.delete
+          participant.destroy
           flash[:notice] = "You removed #{@user.username} as a participant from #{@room.name}"
         else
           flash[:alert] = "An error has occurred"
@@ -52,6 +52,12 @@ class RoomsController < ApplicationController
 
   def show
     render :index
+  end
+
+  def destroy
+    @room.destroy
+    flash[:notice] = "You removed room successfully"
+    redirect_to root_path
   end
 
   private
