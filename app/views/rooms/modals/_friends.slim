@@ -1,0 +1,17 @@
+#friendsModal.modal.fade(tabindex='-1' aria-labelledby='friendsModalLabel' aria-hidden='true')
+  .modal-dialog.modal-dialog-centered
+    .modal-content
+      .modal-header
+        h5#friendsModalLabel.modal-title Your Friends
+        button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+      .modal-body
+        ul.list-group  
+          - current_user.friends.each do |f|
+            li.list-group-item.d-flex.justify-content-between.align-items-center
+              .d-flex.justify-content-start.align-items-center
+                = image_tag f.avatar_url(:thumb), class: "circle"
+                .fs-6.fw-bold #{f.username}
+              = link_to root_path, method: :delete do
+                = icon('fas', 'trash', class: "text-danger")
+      .modal-footer
+        button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close

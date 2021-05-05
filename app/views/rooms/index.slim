@@ -11,7 +11,7 @@
               li
                 a.dropdown-item(data-bs-toggle="modal" data-bs-target="#newGroupModal") New Group
               li
-                a.dropdown-item(href='#') Another action
+                a.dropdown-item(data-bs-toggle="modal" data-bs-target="#friendsModal") My Friends
               li
                 a.dropdown-item(href='#') Something else here
       - @rooms.each do |room|
@@ -44,5 +44,6 @@
       - else
         p index
 = render "form"
+= render "rooms/modals/friends"
 - if @room.present?
   = render "rooms/modals/participant", room: @room
