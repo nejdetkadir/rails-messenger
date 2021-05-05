@@ -47,8 +47,8 @@
                     li
                       = link_to "Left Room", left_room_path(@room, current_user), class: "dropdown-item", data: {:confirm => 'Are you sure?'}, method: :delete
         .messages
-          - 99.times do |message|
-            = render "messages/message", me: message % 2 == 0
+          - @room.messages.each do |message|
+            = render "messages/message", me: message.user.eql?(current_user), message: message
         .form-area
           = render "messages/form"
       - else
