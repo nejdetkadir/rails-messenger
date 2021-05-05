@@ -2,3 +2,122 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "toastr/build/toastr";
+
+$appGrey: #f3f4f5;
+$appGreyDark: #d8dbd5;
+
+#room{
+  border-right: 0.5px solid $appGreyDark;
+  border-left: 0.5px solid $appGreyDark;
+
+  .col-3{
+    height: 100vh;
+    overflow-y: auto;
+    border-right: 0.5px solid $appGreyDark;
+    background-color: white;
+    padding-right: 0px;
+    padding-left: 0px;
+
+    .card{
+      position: sticky;
+      top: 0;
+      background-color: $appGrey;
+    }
+
+    .menu{
+      padding: 10px;
+      border-bottom: 0.5px solid $appGreyDark;
+
+      &:hover{
+        background-color: $appGrey;
+      }
+
+      &.active{
+        background-color: $appGrey;
+      }
+    }
+  }
+
+  .col-9{
+    height: 100vh;
+    overflow-y: auto;
+    background-color: white;
+    padding-left: 0px;
+    padding-right: 0px;
+
+    .card{
+      position: sticky;
+      top: 0;
+      background-color: $appGrey;
+    }
+
+    .messages{
+      background-color: white;
+      padding-left: calc(var(--bs-gutter-x)/ 2);
+      padding-right: calc(var(--bs-gutter-x)/ 2);
+
+      .me{
+        text-align: end;
+
+        .message {
+          background-color: #0d6efd;
+          color: white;
+        }
+      }
+    }
+
+    .form-area{
+      background-color: $appGrey;
+      position: sticky;
+      bottom: 0;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: $appGrey;
+      border: 0.5px solid $appGreyDark;
+
+      textarea{
+        resize: none;
+
+        &:focus{
+          box-shadow: none;
+        }
+      }
+
+      button:focus{
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.message{
+  padding: 5px;
+  background-color: $appGreyDark;
+  border-radius: 12px 12px 12px 12px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  display: inline-block;
+  max-width: 80%;
+}
+
+img.circle{
+  border-radius: 50%;
+}
+
+body{
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.4) 30%, #3f51b5);
+}
+
+.cursor{
+  cursor: pointer !important;
+}
+
+.text-grey{
+  color: #919191 !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .hide-in-mobile{
+    display: none;
+  }
+}

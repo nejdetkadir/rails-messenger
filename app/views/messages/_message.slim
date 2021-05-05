@@ -1,0 +1,8 @@
+- if me.present?
+  .me.d-flex.align-items-center.justify-content-end
+    .fs-6.message Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel nesciunt debitis distinctio repudiandae molestias voluptatum id odit dolorum, alias impedit, sed expedita provident error rerum recusandae corrupti vitae quisquam adipisci!
+    = image_tag "https://via.placeholder.com/50x50", class: "ms-1 circle"
+- else
+  .d-flex.align-items-center.justify-content-start
+    = image_tag "https://via.placeholder.com/50x50", class: "me-1 circle"
+    .fs-6.message Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet est ab voluptatibus, sint laboriosam mollitia voluptatem consequuntur numquam similique amet quidem ratione cupiditate quasi reiciendis eos totam quod esse quaerat!
