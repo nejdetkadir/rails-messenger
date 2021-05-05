@@ -3,8 +3,10 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :username, use: :slugged
 
-  has_many :rooms
-  has_many :participants
+  has_many :rooms, dependent: :destroy
+  has_many :participants, dependent: :destroy
+
+  mount_uploader :avatar, UserAvatarUploader
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

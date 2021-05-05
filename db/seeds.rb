@@ -17,5 +17,5 @@ progress_bar = ProgressBar.create(:title => "Seed data", :starting_at => 0, :tot
     username: Faker::Name.first_name.downcase,
     bio: Faker::Lorem.sentence,
     website: Faker::Internet.url,
-    avatar: Faker::Avatar.image)
+    remote_avatar_url: Faker::Avatar.image)
 end
