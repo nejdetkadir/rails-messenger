@@ -4,7 +4,8 @@ class User < ApplicationRecord
   friendly_id :username, use: :slugged
 
   has_many :rooms
-  
+  has_many :participants
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
