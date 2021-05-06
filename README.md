@@ -1,4 +1,4 @@
-# Rails Messegnger
+# Rails Messenger
   Sample messenger application, created with Ruby on Rails
 
 ## Database Schema
