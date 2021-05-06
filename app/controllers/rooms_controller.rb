@@ -20,7 +20,8 @@ class RoomsController < ApplicationController
     else
       if @user.friends_with?(current_user)
         flash[:notice] = "You added #{@user.username} as a participant to #{@room.name}"
-        Participant.create(user_id: @user.id, room_id: @room.id)
+        participant = Participant.create(user_id: @user.id, room_id: @room.id)
+        CreateRoomJob.perform_later(participant)
       else
         flash[:alert] = "An error has occurred"
       end

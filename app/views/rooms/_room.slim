@@ -1,0 +1,5 @@
+= link_to room_path(room), class: "text-decoration-none" do
+  .menu
+    .d-flex.justify-content-start.align-items-center
+      = image_tag room.avatar_url(:thumb), class: "circle"
+      .ms-1.text-dark.hide-in-mobile #{room.name}
