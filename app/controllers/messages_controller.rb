@@ -3,12 +3,14 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.user = current_user
-
-    if !@message.save
-      flash[:alert] = "#{@message.errors.full_messages.first}"
+    
+    if @message.save
+      SendMessageJob.perform_later(@message)
     end
 
-    redirect_to room_path(@message.room)
+    # if !@message.save
+    #  flash[:alert] = "#{@message.errors.full_messages.first}"
+    # end
   end
 
   private

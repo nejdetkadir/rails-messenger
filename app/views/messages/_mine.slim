@@ -1,0 +1,6 @@
+.me.d-flex.align-items-center.justify-content-end
+  .fs-6.message.d-grid
+    - if message.image?
+      = image_tag message.image_url(:thumb), class: "cursor img-fluid", dataId: message.id
+    | #{message.content}
+  = image_tag message.user.avatar_url(:thumb), class: "ms-1 circle"

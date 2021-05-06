@@ -1,8 +1,0 @@
-- if me.present?
-  .me.d-flex.align-items-center.justify-content-end
-    .fs-6.message #{message.content}
-    = image_tag message.user.avatar_url(:thumb), class: "ms-1 circle"
-- else
-  .d-flex.align-items-center.justify-content-start
-    = image_tag message.user.avatar_url(:thumb), class: "me-1 circle"
-    .fs-6.message #{message.content}

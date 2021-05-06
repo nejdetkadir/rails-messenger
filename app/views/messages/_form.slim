@@ -1,5 +1,8 @@
 = form_with(model: Message.new, class: "d-flex mb-3 mt-3 container") do |f|
   = f.hidden_field :room_id, value: room_id 
-  = f.text_area :content, class: "form-control", placeholder: "Enter message..."
-  = button_tag class: "btn btn-primary" do
+  = f.text_area :content, class: "form-control me-1", placeholder: "Enter message..."
+  = f.file_field :image, class: "d-none", accept: 'image/*'
+  button.btn.btn-warning.me-1#file-btn(type="button")
+    = icon('fas', 'image')
+  = button_tag class: "btn btn-primary", id: "send-msg-btn", disabled: true do
     = icon('fas', 'paper-plane')
